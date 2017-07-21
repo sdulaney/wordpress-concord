@@ -1,0 +1,24 @@
+assets/scss/.sass-cache/*
+node_modules/
+bower_components/
+npm-debug.log
+
+# https://github.com/stevegrunwell/wordpress-git
+# Keep these files out of the repo
+/wp-content/themes/twenty*
+/wp-content/upgrade
+/wp-content/uploads
+/sitemap.*
+/wp-config.php
+*.sql
+
+# Hidden files
+*.DS_Store
+*Thumbs.db
+*.sass-cache*
+*~imageoptim*
+
+# My files to keep out of the repo
+/wp-content/updraft/
+/wp-content/cache/
+/wp-content/wflogs/
