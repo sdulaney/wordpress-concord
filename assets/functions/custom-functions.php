@@ -23,7 +23,7 @@ function get_press_data($post_id = '') {
 		$data_array[$i]['link']		= get_permalink();
 		$data_array[$i]['anchor']	= basename(get_permalink());
 		$data_array[$i]['photo']	= wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-		$data_array[$i]['link_external'] = get_field('press_external_link');
+		$data_array[$i]['link_external'] = get_permalink();
 
 		$i++;
 	}
