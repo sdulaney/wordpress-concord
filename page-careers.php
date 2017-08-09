@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <style type="text/css">
-	
+
 	ul.orbit-container {
     height: auto !important;
 }
@@ -10,24 +10,24 @@ li.orbit-slide {
 }
 
 .bg-contact-us p {
-font-size:1rem;
+font-size:1.25em;
 font-weight:bold;;
 margin: 0 6px 0 0;
 }
 </style>
-	
+
 	<div id="content">
-	
+
 		<div id="inner-content" class="row expanded">
-	
+
 		    <main id="main" class="columns" role="main">
-				
+
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 			    	<?php get_template_part( 'parts/loop', 'page' ); ?>
-			    
-			    <?php endwhile; endif; ?>	
-			   
+
+			    <?php endwhile; endif; ?>
+
 
 			</main> <!-- end #main -->
 <?php /*
@@ -44,18 +44,18 @@ margin: 0 6px 0 0;
 
 <div class="fadeIn wow animated" data-wow-delay="500ms">
     			<div class="columns home-anchor-links anchor-links">
-            
+
                  <div class="custom-menu-wrapper">
-   
+
     <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom xxcustom-menu-tucked" id="tuckedMenu">
         <ul class="pure-menu-list">
             <li><a href="#careers">Careers</a></li>
 					<li><a href="#press">Press</a></li>
 					<li><a href="#contact">Contact Us</a></li>
-           
+
         </ul>
     </div>
-   
+
 </div>
  <a href="#" id="scrollRight"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
 
@@ -64,7 +64,7 @@ margin: 0 6px 0 0;
 </div>
 
 <div class="fadeIn wow animated" data-wow-delay="600ms">
-			
+
 			<div class="row centered-row small" id="careers">
 				<div class="columns">
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -91,18 +91,18 @@ margin: 0 6px 0 0;
 			</div>
 
 			<?php
-			$jobs 	= get_careers_data(); 
+			$jobs 	= get_careers_data();
 			$oportunities = get_field('career_opportunities_flag', 37);
 			$o_message	= get_field('careers_no_opportunities_message', 37);
 			?>
 
-<?php if ( $oportunities == false ) : ?>		
+<?php if ( $oportunities == false ) : ?>
 			<ul class="accordion careers-accordion" style="clear:both; margin-top:2rem;" data-accordion data-allow-all-closed="true" data-slide-speed="400">
-				
+
 				<?php $i = 0; foreach ($jobs as $job) : ?>
 				<?php $is_active = ''; //if ( $i == 0 ) $is_active = ' is-active'; ?>
 				<li class="accordion-item<?php echo $is_active; ?> accordion-item-<?php echo $job['id']; ?>" data-accordion-item>
-					
+
 					<a href="#" class="accordion-title"><?php echo $job['title']; ?></a>
 
 		    		<div class="accordion-content" data-tab-content>
@@ -114,7 +114,7 @@ margin: 0 6px 0 0;
 		    			</div>
 		    		</div>
 			    </li>
-			    
+
 			    <?php $i++; endforeach; ?>
 			</ul>
 <?php else: ?>
@@ -140,14 +140,14 @@ margin: 0 6px 0 0;
 					<h2>Contact Us</h2>
 				</div>
 		    <div class="bg-contact-us">
-				
+
 				<div class="row centered-row small" style="z-index:20;position:relative;padding-top:2em;">
 				<div class="columns medium-6">
 				<?php echo do_shortcode('[formidable id=2]'); ?>
 				</div>
 				<div class="columns medium-6">
-			<p style="margin-bottom:20px;"><a href="https://www.google.com/maps/place/Concord+Real+Estate+Services/@34.0575427,-118.3986037,18z/data=!4m8!1m2!2m1!1s449+S+Beverly+Drive,+First+Floor+Beverly+Hills,+CA+90212!3m4!1s0x80c2bb8b632ad897:0xbf0acad5880844ba!8m2!3d34.0578552!4d-118.39755?hl=en&authuser=0" target="_blank"><img src="/wp-content/uploads/2017/05/concord-map.png" /></a></p>	
-			<p>449 S Beverly Drive, First Floor
+			<p style="margin-bottom:25px;margin-top:25px;"><a href="https://www.google.com/maps/place/Concord+Real+Estate+Services/@34.0575427,-118.3986037,18z/data=!4m8!1m2!2m1!1s449+S+Beverly+Drive,+First+Floor+Beverly+Hills,+CA+90212!3m4!1s0x80c2bb8b632ad897:0xbf0acad5880844ba!8m2!3d34.0578552!4d-118.39755?hl=en&authuser=0" target="_blank"><img src="/wp-content/uploads/2017/05/concord-map.png" /></a></p>
+			<p>449 S Beverly Drive, First Floor<br>
 Beverly Hills, CA 90212</p
 >
 	<p>310 551 0660</p>
@@ -161,6 +161,5 @@ Beverly Hills, CA 90212</p
 
 	</div> <!-- end #content -->
 
-	
-<?php get_footer(); ?>
 
+<?php get_footer(); ?>
