@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <style type="text/css">
-	
+
 	ul.orbit-container {
     height: auto !important;
 }
@@ -10,46 +10,46 @@ li.orbit-slide {
 }
 </style>
 <style type="text/css">
-        
+
         ul.orbit-container {
-    height: auto !important;    
+    height: auto !important;
 }
 li.orbit-slide {
     max-height: none !important;
-}                                       
-#content.start #sliderWrap{             
-min-height:100vh;                       
-}                               
-ul.team-cats{
-margin-top:1.5em;               
 }
-ul.team-cats li {               
+#content.start #sliderWrap{
+min-height:100vh;
+}
+ul.team-cats{
+margin-top:1.5em;
+}
+ul.team-cats li {
     display: inline-block;
     margin: 0 20px;
     font-family: "DDIN Next W01 Light","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 .filter a.active {
-    color: #e5622d;             
-}                               
-.bio-image {                            
-    float: none !important;             
-    display: inline-block;                      
-}                                               
-.team-grid{                                     
-text-align:center;                              
-}                                                   
-</style>            	
+    color: #e5622d;
+}
+.bio-image {
+    float: none !important;
+    display: inline-block;
+}
+.team-grid{
+text-align:center;
+}
+</style>
 	<div id="content">
-	
+
 		<div id="inner-content" class="row expanded">
-	
+
 		    <main id="main" class="columns" role="main">
-				
+
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			    	<?php get_template_part( 'parts/loop', 'page' ); ?>
-			    <?php endwhile; endif; ?>	
-			    					
+			    <?php endwhile; endif; ?>
+
 			</main> <!-- end #main -->
 
 <?php /*
@@ -68,18 +68,18 @@ text-align:center;
 
 <div class="fadeIn wow animated" data-wow-delay="500ms">
     			<div class="columns home-anchor-links anchor-links">
-            
+
                  <div class="custom-menu-wrapper">
-   
+
     <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom xxcustom-menu-tucked" id="tuckedMenu">
         <ul class="pure-menu-list">
             <li><a href="#our-team">Our Team</a></li>
 		<li><a href="#case-studies">Case Studies</a></li>
 		<li><a href="#social-media">Social Media</a></li>
-           
+
         </ul>
     </div>
-   
+
 </div>
  <a href="#" id="scrollRight"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
 
@@ -103,7 +103,7 @@ text-align:center;
                                                 if ( $count > 0 ) {
                                                     echo '<ul class="team-cats filter">';
                                                 //echo '<li><a href="#" data-filter="all" class="active">All</a></li>';
-                                            echo '<li><a href="our-team">All</a></li>';
+                                            echo '<li><a href="http://www.concord-re.com/our-team/">All</a></li>';
 
                                                     foreach ( $terms as $term ) {
                                                         echo '<li><a href="#" data-filter="' . $term->slug . '"';
@@ -155,21 +155,21 @@ foreach ($case_studies as $cs) {
 
 
 if ( $use_orbit ) {
-	echo get_case_studies_orbit($assoc_case_studies_ids); 
+	echo get_case_studies_orbit($assoc_case_studies_ids);
 } else {
-    echo get_case_studies_grid($assoc_case_studies_ids); 
-}    
+    echo get_case_studies_grid($assoc_case_studies_ids);
+}
 ?>
 
-        
-			</div> 
+
+			</div>
 
 			<div class="home-divider" id="social-media" style="margin-bottom:0">
 				<h2>Social Media</h2>
 			</div>
 
 			<?php echo do_shortcode('[ff id="1"]'); ?>
-		    
+
 		</div> <!-- end #inner-content -->
 
 	</div> <!-- end #content -->
@@ -209,7 +209,7 @@ $('.team-image').on("touchstart", function (e) {
 var link = $(this); //preselect the link
 if (link.hasClass('hover')) {
     return true;
- } 
+ }
 else {
    link.addClass('hover');
    $('.team-image').not(this).removeClass('hover');
@@ -219,6 +219,5 @@ else {
 });
 });
 </script>
-	
-<?php get_footer(); ?>
 
+<?php get_footer(); ?>
