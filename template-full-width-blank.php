@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Full Width (No Sidebar) (Slider)
+Template Name: Full Width (No Sidebar) (Blank)
 */
 ?>
 
@@ -14,7 +14,7 @@ Template Name: Full Width (No Sidebar) (Slider)
 
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-					<?php get_template_part( 'parts/loop', 'page' ); ?>
+					<?php get_template_part( 'parts/loop', 'page-blank' ); ?>
 
 				<?php endwhile; endif; ?>
 

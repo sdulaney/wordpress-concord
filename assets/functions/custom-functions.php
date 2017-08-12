@@ -73,41 +73,41 @@ function get_services_data($post_id = '') {
 
 function get_services_grid() {
 	$services = get_services_data();
-	
+
 	$html = '<div class="row">';
-		
-	if ( !$services ) 
+
+	if ( !$services )
 		return false;
 
 	$html .= '<div class="row property-grid services-grid collapse">';
-	
+
 	foreach ( $services as $service ) {
 		$image 	= $service['photo'];
-		
+
 		$html .= '<div class="medium-6 large-4 columns">';
 		$html .= '<div class="image-wrapper overlay-fade-in">';
 
-		if ( $image ) {	
+		if ( $image ) {
 			$html .= '<a href="#"><img class="img-responsive" src="' . $image . '" /></a>';
 		}
-		
+
 		$html .= '<div class="image-overlay-content">';
 		$html .= '<a href="services/#' . $service['anchor'] . '"></a>';
 	    $html .=	'<h2><span>' . $service['title'] . '</span></h2>';
         if ( $service['anchor'] == 'property-management' ) {
             $html .= '<div class="listings-button"><a href="https://concordrealestate.appfolio.com/listings/" target="_blank">View Property Listings</a></div>';
         }
-		$html .= '</div>';	
-
-		$html .= '</div>';			
-		
-		
 		$html .= '</div>';
-		
+
+		$html .= '</div>';
+
+
+		$html .= '</div>';
+
 	}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
@@ -175,7 +175,7 @@ function get_team_data($member_id = '', $orderby='', $terms='') {
         	)
     		);
 	}
-	
+
 	$query = new WP_Query( $args );
 
 	while ( $query->have_posts() ) {
@@ -188,8 +188,8 @@ function get_team_data($member_id = '', $orderby='', $terms='') {
 		$team_members[$i]['fax'] 		= get_field('member_fax_number');
 		$team_members[$i]['email'] 		= get_field('member_email');
 		$team_members[$i]['photo']		= wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-		$team_members[$i]['terms']		= get_the_terms($post->ID, 'team_category');	
-	
+		$team_members[$i]['terms']		= get_the_terms($post->ID, 'team_category');
+
 		$alt_image 	= get_field('member_alt_image');
 		$team_members[$i]['alt_image']	= $alt_image['url'];
 
@@ -200,23 +200,23 @@ function get_team_data($member_id = '', $orderby='', $terms='') {
 
 function get_team() {
 	$team = get_team_data();
-	
+
 	$html = '<div class="row">';
-	
-	
-	if ( !$team ) 
+
+
+	if ( !$team )
 		return false;
-	
+
 	foreach ( $team as $person ) {
 		$image 	= $person['photo'];
 		$bio 	= $person['bio'];
 		$use_lazy = false;
-		
+
 		if ( !$bio ) $bio = '';
-	
+
 		$html .= '<div class="row bio-row">';
-		
-		if ( $image ) {	
+
+		if ( $image ) {
 
 			$html .= '<div class="columns small-3 medium-3 large-3 bio-image">';
 			if ( $use_lazy ){
@@ -225,29 +225,29 @@ function get_team() {
 				$html .= '<img class="img-responsive" src="' . $image . '" />';
 			}
 			$html .= '</div>';
-			
+
 			$html .= '<div class="columns small-9 medium-9 large-9">';
 		} else {
 			$html .= '<div class="columns small-3 medium-3 large-3 bio-image">';
 			//$html .= '<img class="img-responsive lazyimg" data-original="' . $image . '" />';
 			$html .= '</div>';
-			
+
 			$html .= '<div class="columns small-9 medium-9 large-9">';
 		}
-		
-		
-		
+
+
+
 		$html .= '<div class="bio-name">' . $person['name'] . '</div>';
-		
+
 		$html .= '<div class="bio-title">' . $person['title'] . '</div>';
 		$html .= $bio;
 		$html .= '</div>';
-		
+
 		$html .= '</div>';
 	}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
@@ -258,15 +258,15 @@ function get_team_grid() {
 	$team = get_team_data();
 	$use_lazy = false;
 	$html = '<div class="row team-grid">';
-	
-		
-	if ( !$team ) 
+
+
+	if ( !$team )
 		return false;
-	
+
 	foreach ( $team as $person ) {
 		$image 	= $person['photo'];
-		
-		if ( $image ) {	
+
+		if ( $image ) {
 			$html .= '<div class="columns small-4 medium-3 large-2 bio-image">';
 			if ( $use_lazy ){
 				$html .= '<img class="img-responsive lazyimg" data-original="' . $image . '" />';
@@ -275,15 +275,15 @@ function get_team_grid() {
 			}
 			$html .= '<div class="bio-name">' . $person['name'] . '</div>';
 			$html .= '</div>';
-			
+
 		} else {
 			// nothing
 		}
-		
+
 	}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
@@ -307,7 +307,7 @@ function get_team_grid_orbit($atts) {
 	// split array for use with orbit slides
 	$chunk = array_chunk($team_array, 12);
 
-	$html = '<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="autoPlay:false"> 
+	$html = '<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="autoPlay:false">
   <ul class="orbit-container">';
 
     $i = 0;
@@ -316,18 +316,18 @@ function get_team_grid_orbit($atts) {
     	if ( $i > 0 ) $active_slide = '';
 	    $html .= '<li class="' . $active_slide .'orbit-slide">';
 		$html .= '<div class="row team-grid">';
-		
-			
-		if ( !$team ) 
+
+
+		if ( !$team )
 			return false;
-		
+
 		foreach ( $team as $person ) {
 			$image 			= $person['photo'];
 			$dual 			= '';
 			$dual_bg_image 	= $person['alt_image'];
 			$use_lazy		= true;
-			
-			if ( $image ) {	
+
+			if ( $image ) {
 				if ($person['alt_image']) {
 					$dual 			= ' dual-image';
 					$dual_bg_image	= ' style="background-image: url(\'' . $person['alt_image'] . '\');"';
@@ -342,13 +342,13 @@ function get_team_grid_orbit($atts) {
 				$html .= '</a>';
 				$html .= '<div class="bio-name"><a href="' . get_site_url() . '/our-team/#' . str_replace(' ', '_', strtolower($person['name'])) . '">' . $person['name'] . '</a></div>';
 				$html .= '</div>';
-				
+
 			} else {
 				// nothing
 			}
-			
+
 		}
-		
+
 		$html .= '</div>';
 		$html .= ' </li>';
 		$i++;
@@ -360,9 +360,9 @@ function get_team_grid_orbit($atts) {
 
 	$bullets ='
 	  <nav class="orbit-bullets">';
-      
+
     $i = 0;
-    $is_active = ' class="is-active"';  
+    $is_active = ' class="is-active"';
 
 	foreach ( $chunk as $team ) {
 		if ( $i > 0 ) $is_active = '';
@@ -371,10 +371,10 @@ function get_team_grid_orbit($atts) {
 	}
 	  $bullets .= '</nav>';
 
-	if ( count($chunk) < 2 ) $bullets = '';	
+	if ( count($chunk) < 2 ) $bullets = '';
 	$html .= $bullets;
 	$html .='</div>';
-	
+
 	return $html;
 }
 
@@ -385,8 +385,8 @@ add_shortcode( 'team_grid_orbit', 'get_team_grid_orbit' );
 function get_property_data($property_id = '', $posts_per_page = 0, $type = '', $category_slug = '') {
 	$properties 	= array();
 	$i				= 0;
-	if ($posts_per_page < 1 OR !$posts_per_page) { 
-    
+	if ($posts_per_page < 1 OR !$posts_per_page) {
+
 
 		$args = array(
 			'post_type' => 'properties',
@@ -395,7 +395,7 @@ function get_property_data($property_id = '', $posts_per_page = 0, $type = '', $
   			'nopaging'			=> true,
             'orderby'   => 'menu_order',
             'order' => 'ASC'
-              
+
 		);
 	} else {
 	$args = array(
@@ -446,7 +446,7 @@ function get_property_data($property_id = '', $posts_per_page = 0, $type = '', $
 			$args['post__in'] = $property_id;
             $args['orderby'] = 'post__in';
 		} else {
-			$args['p'] = $property_id;		
+			$args['p'] = $property_id;
 		}
 	}
 
@@ -464,7 +464,7 @@ function get_property_data($property_id = '', $posts_per_page = 0, $type = '', $
 		$properties[$i]['is_sold'] 		= get_field('property_status_sold');
 		$properties[$i]['case_study']	= get_field('property_related_case_study');
 
-        
+
 		$properties[$i]['name']			= $post_title;
 
 		if ( $properties[$i]['street'] ) {
@@ -476,8 +476,8 @@ function get_property_data($property_id = '', $posts_per_page = 0, $type = '', $
 		$properties[$i]['state']		= get_field('property_state');
 		$properties[$i]['zip']			= get_field('property_zip');
 		$properties[$i]['area']			= get_field('property_area');
-       
-		$properties[$i]['agent']		= get_field('property_agent'); 
+
+		$properties[$i]['agent']		= get_field('property_agent');
         $properties[$i]['ID']        	= get_the_ID();
 
 		$i++;
@@ -488,14 +488,14 @@ function get_property_data($property_id = '', $posts_per_page = 0, $type = '', $
 
 function get_properties($post_id = '', $posts_per_page = 0, $type = '', $category_slug = '') {
 	$properties = get_property_data($post_id, $posts_per_page, $type, $category_slug);
-	
-	
-		
-	if ( !$properties ) 
+
+
+
+	if ( !$properties )
 		return false;
 
 	$html = '<div class="row property-grid collapse">';
-	
+
 	foreach ( $properties as $property ) {
 		$image 					= $property['thumb'];
 		$property_status_sold 	= $property['is_sold'];
@@ -506,22 +506,22 @@ function get_properties($post_id = '', $posts_per_page = 0, $type = '', $categor
 		$html .= '<div id="property' . $property['ID'] . '" class="medium-6 large-4 columns">';
 		$html .= '<div class="image-wrapper overlay-fade-in" style="height: 300px;background:url(\'' . $image . '\')no-repeat center center;background-size:cover;">';
 
-		if ( $image ) {	
+		if ( $image ) {
 			//$html .= '<img class="img-responsive" src="' . $image . '" />';
 		}
-		
+
 		$html .= '<div class="image-overlay-content">';
 	    $html .=	'<h2 class="address">' . $property['street'] . '<br />' . $property['city'] . ', ' . $property['state'];
         $html .= '</h2>';
 	    $html .=	'<p class="price">' . $property['price'] . '</p>';
 	    $html .=    '<p class="description">' . $property['description'] . '</p>';
 	    //$html .=    '<p>' . $property['units'] . '</p>';
-		
+
 		if ( $agent_email ) {
 			$html .=    '<p class="description"><a style="color:white;text-transform:uppercase;border:solid 1px white;display:inline-block;padding:6px;margin-top:20px;position:relative;" href="mailto:' . $agent_email . '">Contact Agent</a></p>';
 		}
-	
-		$html .= '</div>';	
+
+		$html .= '</div>';
 
 		if ( $property_status_sold ) {
 			$sold_link = '/concord/case-studies/';
@@ -534,15 +534,15 @@ function get_properties($post_id = '', $posts_per_page = 0, $type = '', $categor
 			$html .= '<a href="' . $property_pdf_document . '" target="_blank" class="grid-icon triangle download"><i class="fa fa-download" aria-hidden="true"></i></a>';
 		}
 
-		$html .= '</div>';			
-		
-		
 		$html .= '</div>';
-		
+
+
+		$html .= '</div>';
+
 	}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
@@ -565,9 +565,9 @@ function get_case_studies_data($post_id = '', $posts_per_page = false, $service_
 		if ( is_array($post_id)) {
 			$args['post__in'] = $post_id;
             $args['orderby'] = 'post__in';
-            
+
 		} else {
-			$args['p'] = $post_id;		
+			$args['p'] = $post_id;
 		}
 	}
 
@@ -597,11 +597,11 @@ function get_case_studies_data($post_id = '', $posts_per_page = false, $service_
 		$data_array[$i]['city']				= get_field('address_city');
 		$data_array[$i]['state']			= get_field('address_state');
 		$data_array[$i]['zip']				= get_field('address_zip');
-		
+
 		$data_array[$i]['quote']			= get_field('case_study_quote');
 		$data_array[$i]['quote_person']		= get_field('case_study_quote_person');
 		$data_array[$i]['quote_link']		= get_field('case_study_quote_link');
-		
+
 		$data_array[$i]['img_banner']		= get_field('cs_single_main_banner');
 		$data_array[$i]['img_related']		= get_field('cs_related_image');
 		$img_featured                   	= get_field('cs_featured_cover_image');
@@ -622,7 +622,7 @@ function get_case_studies_orbit($post_id = '', $posts_per_page = false) {
 
     // filter team member without a photo
 	foreach ( $properties as $index => $data ) {
-	    $properties_array[] = $data; // new array	
+	    $properties_array[] = $data; // new array
 	}
 
 	// split array for use with orbit slides
@@ -636,11 +636,11 @@ function get_case_studies_orbit($post_id = '', $posts_per_page = false) {
     foreach ( $chunk as $properties ) {
     	if ( $i > 0 ) $active_slide = '';
 	    $html .= '<li class="' . $active_slide .'orbit-slide">';
-		$html .= '<div class="row case-study-grid collapse">';		
-			
-		if ( !$properties ) 
+		$html .= '<div class="row case-study-grid collapse">';
+
+		if ( !$properties )
 			return false;
-					
+
 			////////
 
 
@@ -651,14 +651,14 @@ function get_case_studies_orbit($post_id = '', $posts_per_page = false) {
 		   // }
 			foreach ( $properties as $property ) {
 				$image 	= $property['img_featured_m'];
-				
+
 				$html .= '<div class="' . $col_class . ' columns">';
 				$html .= '<div class="image-wrapper overlay-fade-in" style="height: 350px;background:url(\'' . $image . '\')no-repeat center center;background-size:cover;">';
 
-				if ( $image ) {	
+				if ( $image ) {
 					//$html .= '<img class="img-responsive" src="' . $image . '" />';
 				}
-				
+
 				$html .= '<div class="image-overlay-content">';
 				$html .= '<a class="case-study-link" href="' . $property['link'] . '"></a>';
 			    $html .=	'<h2><span>' . $property['street'] . '</span>,<span>&nbsp;' . $property['city'] . '</span> ' . $property['zip'] . '</h2>';
@@ -667,7 +667,7 @@ function get_case_studies_orbit($post_id = '', $posts_per_page = false) {
 			    //$html .=    '<p>' . $property['type'] . '</p>';
 			    //$html .=    '<p>' . $property['units'] . '</p>';
 
-			   
+
 			   if ( count ( $property['services']) > 1 ) {
 				    $html .= '<ul class="bullet-list">';
 				    $html .= '<li class="bullet-list-title">What we did for our client:</li>';
@@ -677,19 +677,19 @@ function get_case_studies_orbit($post_id = '', $posts_per_page = false) {
 			  		$html .=  '</ul>';
 			  	}
 
-				$html .= '</div>';	
+				$html .= '</div>';
 
-				
-				$html .= '</div>';			
-				
-				
+
+				$html .= '</div>';
+
+
 				$html .= '</div>';
 
 
 			////////
-			
+
 		}
-		
+
 		$html .= '</div>';
 		$html .= ' </li>';
 		$i++;
@@ -701,7 +701,7 @@ function get_case_studies_orbit($post_id = '', $posts_per_page = false) {
 	  <nav class="orbit-bullets">';
 
 	$i = 0;
-	$is_active = ' class="is-active"';  
+	$is_active = ' class="is-active"';
 
 	foreach ( $chunk as $properties ) {
 		if ( $i > 0 ) $is_active = '';
@@ -712,17 +712,17 @@ function get_case_studies_orbit($post_id = '', $posts_per_page = false) {
 	$html .='
 	  </nav>
 	</div>';
-	
+
 	return $html;
-    
+
 }
 
 function get_case_studies_grid($post_id = '', $posts_per_page = 0) {
 	$properties = get_case_studies_data($post_id, $posts_per_page);
 
 	$html = '<div class="row">';
-		
-	if ( !$properties ) 
+
+	if ( !$properties )
 		return false;
 
 	$html .= '<div class="row case-study-grid collapse">';
@@ -741,14 +741,14 @@ function get_case_studies_grid($post_id = '', $posts_per_page = 0) {
     }
 	foreach ( $properties as $property ) {
 		$image 	= $property['img_featured'];
-		
+
 		$html .= '<div class="' . $col_class . ' columns">';
 		$html .= '<div class="image-wrapper overlay-fade-in" style="height: 350px;background:url(\'' . $image . '\')no-repeat center center;background-size:cover;">';
 
-		if ( $image ) {	
+		if ( $image ) {
 			//$html .= '<img class="img-responsive" src="' . $image . '" />';
 		}
-		
+
 		$html .= '<div class="image-overlay-content">';
 		$html .= '<a class="case-study-link" href="' . $property['link'] . '"></a>';
 	    //$html .=	'<h2>' . $property['name'] . '</h2>';
@@ -758,7 +758,7 @@ function get_case_studies_grid($post_id = '', $posts_per_page = 0) {
 	    //$html .=    '<p>' . $property['type'] . '</p>';
 	    //$html .=    '<p>' . $property['units'] . '</p>';
 
-	   
+
 	   if ( count ( $property['services']) > 1 ) {
 		    $html .= '<ul class="bullet-list">';
 		    $html .= '<li class="bullet-list-title">What we did for our client:</li>';
@@ -768,18 +768,18 @@ function get_case_studies_grid($post_id = '', $posts_per_page = 0) {
 	  		$html .=  '</ul>';
 	  	}
 
-		$html .= '</div>';	
-
-		
-		$html .= '</div>';			
-		
-		
 		$html .= '</div>';
-		
+
+
+		$html .= '</div>';
+
+
+		$html .= '</div>';
+
 	}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
@@ -790,15 +790,15 @@ function get_case_studies_grid_overlay($post_id = '', $posts_per_page = 0, $serv
 	$properties = get_case_studies_data($post_id, $posts_per_page, $service_id);
 
 	$html = '<div class="row">';
-		
-	if ( !$properties ) 
+
+	if ( !$properties )
 		return false;
 
 	$html .= '<div class="row case-study-grid case-study-overlay-white collapse">';
 	$count = count($properties);
 	foreach ( $properties as $property ) {
 		$image 	= $property['img_featured'];
-		
+
 		if ( $count == 2 ) {
 			$html .= '<div class="medium-6 large-6 columns">';
 		} elseif ( $count == 3 ) {
@@ -808,10 +808,10 @@ function get_case_studies_grid_overlay($post_id = '', $posts_per_page = 0, $serv
 		}
 		$html .= '<div class="image-wrapper overlay-fade-in" style="height: 350px;background:url(\'' . $image . '\')no-repeat center center;background-size:cover;">';
 
-		if ( $image ) {	
+		if ( $image ) {
 			//$html .= '<img class="img-responsive" src="' . $image . '" />';
 		}
-		
+
 		$html .= '<div class="overlay-white">';
 		$html .= '<p class="top-title">Case Study:</p>';
 		$html .= '<div class="address-wrap">';
@@ -821,19 +821,19 @@ function get_case_studies_grid_overlay($post_id = '', $posts_per_page = 0, $serv
 
 		$html .= '<p>' . $property['street'] . '<br />' . $property['city']. ', ' . $property['state'] . '<br />' . $property['zip'] . '</p>';
 		$html .= '</div>';
-	    
-		$html .= '</div>';	
 
-		
-		$html .= '</div>';			
-		
-		
 		$html .= '</div>';
-		
+
+
+		$html .= '</div>';
+
+
+		$html .= '</div>';
+
 	}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
@@ -841,12 +841,12 @@ function get_services_gallery($service_id = false) {
 	$gallery = get_field('services_gallery', $service_id);
 
 	$html = '<div class="row">';
-		
-	if ( !$gallery ) 
+
+	if ( !$gallery )
 		return false;
 
 	$html .= '<div class="row case-study-grid case-study-overlay-white collapse">';
-	
+
 	$count = count($gallery);
 	foreach ( $gallery as $image ) {
 
@@ -858,14 +858,14 @@ function get_services_gallery($service_id = false) {
 			$html .= '<div class="columns">';
 		}
 		$html .= '<div class="image-wrapper overlay-fade-in" style="height: 350px;background:url(\'' . $image['url'] . '\')no-repeat center center;background-size:cover;">';
-		
+
 		$html .= '</div>';
 		$html .= '</div>';
 
 		}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
@@ -873,55 +873,55 @@ function get_press_grid($post_id = '', $posts_per_page = 0) {
 	$items = get_press_data($post_id, $posts_per_page);
 
 	$html = '<div class="row">';
-		
-	if ( !$items ) 
+
+	if ( !$items )
 		return false;
 
 	$html .= '<div class="row property-grid press-grid collapse" style="margin-top:2em;clear:both;">';
-	
+
 	foreach ( $items as $item ) {
 		$image 	= $item['photo'];
-		
+
 		$html .= '<div class="medium-6 large-4 columns">';
 		$html .= '<div class="image-wrapper overlay-fade-in" style="height: 350px;background:url(\'' . $image . '\')no-repeat center center;background-size:cover;">';
 
-		if ( $item['link_external'] ) {	
+		if ( $item['link_external'] ) {
 			$html .= '<a class="press-link" target="_blank" href="' . $item['link_external'] . '" />&nbsp;</a>';
 		}
-		
+
 		$html .= '<div class="image-overlay-content">';
 	    $html .=	'<h2>' . $item['title'] . '</h2>';
-	   
-		$html .= '</div>';	
 
-		
-		$html .= '</div>';			
-		
-		
 		$html .= '</div>';
-		
+
+
+		$html .= '</div>';
+
+
+		$html .= '</div>';
+
 	}
-	
+
 	$html .= '</div>';
-	
+
 	return $html;
 }
 
 function custom_taxonomies_terms_links() {
- 
+
     // Get post type by post.
     $post_type = 'team_members';
- 
+
     // Get post type taxonomies.
     $taxonomies = get_object_taxonomies( $post_type, 'objects' );
- 
+
     $out = array();
- 
+
     foreach ( $taxonomies as $taxonomy_slug => $taxonomy ){
- 
+
         // Get the terms related to post.
         $terms = get_the_terms( $post->ID, $taxonomy_slug );
- 
+
         if ( ! empty( $terms ) ) {
             $out[] = "<h2>" . $taxonomy->label . "</h2>\n<ul>";
             foreach ( $terms as $term ) {
@@ -936,18 +936,16 @@ function custom_taxonomies_terms_links() {
     return implode( '', $out );
 }
 
-show_admin_bar( false );
+// show_admin_bar( false );
 
 /* CUSTOM WP QUERY SORTING */
-function posts_orderby_lastname ($orderby_statement) 
+function posts_orderby_lastname ($orderby_statement)
 {
-	
+
   $orderby_statement = "RIGHT(post_title, LOCATE(' ', REVERSE(post_title)) - 1) ASC";
     return $orderby_statement;
-	
+
 }
 if ( is_post_type_archive('team_members') ) {
 add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
 }
-   
-
